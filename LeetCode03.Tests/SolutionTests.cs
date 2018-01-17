@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LeetCode03;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode03.Tests
 {
-    [TestFixture()]
+    [TestClass()]
     public class SolutionTests
     {
-        [Test()]
+        [TestMethod()]
         public void LengthOfLongestSubstringTest_abcabcbb_ShouldBe_abc()
         {
             var input = "abcabcbb";
@@ -21,8 +21,10 @@ namespace LeetCode03.Tests
 
             var expected = 3;
 
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
+
 
         }
+
     }
 }
