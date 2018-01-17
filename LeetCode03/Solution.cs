@@ -10,36 +10,42 @@ namespace LeetCode03
     {
         public int LengthOfLongestSubstring(string s)
         {
+            if (s == String.Empty)
+                return 0;
+
             char[] chars = s.ToCharArray();
             List<string> tmps = new List<string>();
+            string tmp = "";
             for (int i = 0; i < chars.Length; i++)
             {
-                
 
-                int currentIndex = i;
-                string tmp = "";
-
-                while (currentIndex < chars.Length  && !TempIsExistCharInChars(tmp,chars,currentIndex) )
+                if (!TempIsExistCharInChars(tmp, chars, i))
                 {
-                    var key = chars[currentIndex];
+                    var key = chars[i];
                     tmp = tmp + key;
-                    currentIndex = currentIndex + 1;
+
+                    if (i == chars.Length - 1)
+                    {
+                        tmps.Add(tmp);
+                    }
+;
                 }
+                else
+                {
+                    tmps.Add(tmp);
+                    tmp = tmp.Substring(1, tmp.Length-1);
 
-                tmps.Add(tmp);
-                tmp = "";
-
-
+                }
 
             }
 
             return tmps.Select(x => x.Length).Max(x => x);
-          
+
         }
 
-        private bool TempIsExistCharInChars(string tmp, char[] chars, int i)
+        private bool TempIsExistCharInChars(string tmp, char[] chars, int index)
         {
-            var key = chars[i];
+            var key = chars[index];
             return tmp.Any(x => x == key);
         }
     }
