@@ -18,22 +18,27 @@ namespace LeetCode03
             string tmp = "";
             for (int i = 0; i < chars.Length; i++)
             {
-
+                var key = chars[i];
                 if (!TempIsExistCharInChars(tmp, chars, i))
                 {
-                    var key = chars[i];
+                    
                     tmp = tmp + key;
 
                     if (i == chars.Length - 1)
                     {
                         tmps.Add(tmp);
                     }
-;
+
                 }
                 else
                 {
                     tmps.Add(tmp);
-                    tmp = tmp.Substring(1, tmp.Length-1);
+
+                    var startIndex = tmp.IndexOf(key)+1;
+
+                    tmp = tmp.Length == startIndex ? "" : tmp.Substring(startIndex, tmp.Length - startIndex);
+
+                    tmp = tmp + key;
 
                 }
 

@@ -100,6 +100,19 @@ namespace LeetCode03.Tests
             Assert.IsTrue(expected >  actual);
 
         }
+        [TestMethod()]
+        public void LengthOfLongestSubstringTest_aab_ShouldBe_2()
+        {
+            var input = "aab";
 
+            Solution solution = new Solution();
+
+            var actual = solution.LengthOfLongestSubstring(input);
+
+            var expected = 2;
+
+            Assert.AreEqual(expected, actual); ;
+
+        }
     }
 }
